@@ -1,0 +1,6 @@
+# Configure about-distro:
+mkdir -p $PKG/etc/xdg
+mkdir -p $PKG/usr/share/icons
+install -m0644 -o root $CWD/post-install/kinfocenter/slackware-logo-sonicde.svg $PKG/usr/share/icons/slackware-logo-sonicde.svg
+install -m0644 -o root $CWD/post-install/kinfocenter/kcm-about-distrorc.ex $PKG/etc/xdg/kcm-about-distrorc
+install -m0644 -o root $CWD/post-install/kinfocenter/kcm-about-distrorc.ex $PKG/etc/xdg/scm-about-distrorc

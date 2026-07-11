@@ -1,0 +1,47 @@
+# SonicDE package output names.
+#
+# Left column: internal Slackware/KDE package key used by modules, pkgsrc,
+# patches, cmake overrides, doinst.sh, and slack-desc lookup.
+# Right column: SonicDE package name used for the generated .txz package.
+#
+# Only packages with a public Sonic-DE repository and a matching tag are listed
+# here.
+silver-theme sonic-silver-theme
+silver-sddm sonic-silver-sddm
+extra-cmake-modules sonic-frameworks-cmake-modules
+attica sonic-frameworks-open-collab
+kauth sonic-frameworks-auth
+polkit-qt-1 sonic-polkit
+kcoreaddons sonic-frameworks-core-addons
+kguiaddons sonic-frameworks-gui-addons
+kdoctools sonic-frameworks-doctools
+kglobalaccel sonic-frameworks-keybind
+kwindowsystem sonic-frameworks-windowsystem
+kirigami sonic-frameworks-quick-ui
+kirigami-addons sonic-frameworks-quick-ui-addons
+kquickimageeditor sonic-quick-image-editor
+sonic-frameworks-via sonic-frameworks-via
+krunner sonic-frameworks-runner
+kio sonic-frameworks-io
+kio-fuse sonic-frameworks-io-fuse
+kio-extras sonic-frameworks-io-extras
+kdecoration sonic-decoration
+kglobalacceld sonic-keybind-daemon
+kinfocenter sonic-system-info
+libksysguard sonic-sysguard-library
+libkscreen sonic-screen-library
+plasma-activities sonic-activities
+libplasma sonic-interface-libraries
+kpipewire sonic-pipewire
+kscreenlocker sonic-screenlocker
+knighttime sonic-night-light
+kwin-x11 sonic-win
+plasma-workspace sonic-workspace
+plasma-desktop sonic-desktop-interface
+kdeplasma-addons sonic-workspace-addons
+plasma-workspace-wallpapers sonic-workspace-wallpapers
+plasma-nm sonic-network-manager
+kscreen sonic-screen
+plasma-pa sonic-audio-applet-pulse
+plasma-login-manager sonic-login-manager
+plasma-mobile sonic-mobile-interface

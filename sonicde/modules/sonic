@@ -1,0 +1,50 @@
+# SonicDE packages with confirmed public tags.
+# Rule: if the public Sonic-DE repository exists and the matching tag exists,
+# build the SonicDE source.
+
+# Standalone Sonic extras and themes:
+silver-theme
+silver-sddm
+
+# Frameworks / build infrastructure replaced by SonicDE sources:
+extra-cmake-modules
+attica
+kauth
+polkit-qt-1
+kcoreaddons
+kguiaddons
+kdoctools
+kglobalaccel
+kwindowsystem
+kirigami
+kirigami-addons
+kquickimageeditor
+sonic-frameworks-via
+krunner
+kio
+
+# KDE Gear / support components with SonicDE source:
+kio-fuse
+kio-extras
+
+# Plasma/SonicDE desktop components:
+kdecoration
+kglobalacceld
+kinfocenter
+libksysguard
+libkscreen
+plasma-activities
+libplasma
+kpipewire
+kscreenlocker
+knighttime
+kwin-x11
+plasma-workspace
+plasma-desktop
+kdeplasma-addons
+plasma-workspace-wallpapers
+plasma-nm
+kscreen
+plasma-pa
+plasma-login-manager
+plasma-mobile

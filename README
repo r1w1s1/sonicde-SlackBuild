@@ -1,0 +1,51 @@
+SonicDE SlackBuild for Slackware
+================================
+
+Builds SonicDE packages for Slackware-current by replacing selected KDE/Plasma
+packages. Install Slackware's KDE set first; SonicDE still uses many KDE,
+Plasma, Frameworks, Gear, Qt6, and integration packages from Slackware.
+
+Quick start
+-----------
+Install Slackware KDE first:
+
+  slackpkg install kde
+
+Before downloading sources, check for newer public SonicDE tags:
+
+  cd sonicde
+  ./sonicde_check_tags.sh
+
+If it shows UPDATE entries, refresh `source-versions` first. For new packages,
+you may also need to update `modules/sonic`, `package-renames`, `pkgsrc/*`, and
+`slack-desc/*`.
+
+Then download SonicDE sources, build, and install:
+
+  cd sonicde
+  ./sonicde_checkout.sh -c -f sonic
+  TMP=/tmp/sonicde-build SLACK_KDE_BUILD_DIR=/tmp/sonicde-packages UPGRADE=yes SKIPBUILT=no EXITFAIL=yes ./sonicde.SlackBuild sonic
+
+Reboot or restart the graphical session after installation.
+
+Useful checks
+-------------
+Show packages that will be built:
+
+  cd sonicde
+  PRECHECK=yes GRACETME=0 PRINT_PACKAGE_NAME=1 ./sonicde.SlackBuild sonic
+
+Check installed SonicDE packages:
+
+  ls /var/log/packages/sonic-* | sort
+
+Check that replaced KDE/Plasma packages are gone:
+
+  cd sonicde
+  ./sonicde_remove_replaced.sh -n
+
+That command should report the replaced KDE/Plasma packages as not installed.
+
+More information
+----------------
+See `SONICDE-NOTES.txt` for implementation notes.

@@ -1,0 +1,3 @@
+#!/bin/sh
+# Start KWin as a Plasma 6 Wayland session:
+/usr/libexec/plasma-dbus-run-session-if-needed /usr/bin/startplasma-wayland

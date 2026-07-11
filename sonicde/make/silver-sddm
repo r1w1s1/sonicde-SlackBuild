@@ -1,0 +1,2 @@
+mkdir -p $PKG/usr/share/sddm/themes || exit 1
+cp -a Sonic-Silver Sonic-Silver-Light $PKG/usr/share/sddm/themes/ || exit 1

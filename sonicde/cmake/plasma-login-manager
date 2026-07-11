@@ -1,0 +1,8 @@
+mkdir -p build
+cd build
+  cmake \
+    $KDE_OPT_ARGS \
+    "${KDE_BUILD_ARGS[@]}" \
+    "${KDE_QT6_ARGS[@]}" \
+    -DINSTALL_PAM_CONFIGURATION:BOOL=OFF \
+    .. || exit 1

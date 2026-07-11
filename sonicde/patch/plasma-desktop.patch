@@ -1,0 +1,5 @@
+# Disabled for SonicDE: this Slackware Plasma patch does not apply cleanly to
+# the sonic-desktop-interface source. Keep the patch file for reference until
+# the default launcher policy is reviewed for SonicDE.
+#cat $CWD/patch/plasma-desktop/plasma-desktop.default_launcher_tasks.diff | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
+#rm -f ./applets/taskmanager/package/contents/config/main.xml.orig

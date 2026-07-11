@@ -1,0 +1,154 @@
+SonicDE SlackBuild Notes
+
+Current idea
+------------
+This tree is based on Slackware-current's KDE source tree, but adjusted to test
+SonicDE source replacements with minimal changes.
+
+The goal is not to rewrite Slackware's KDE build system. Common KDE/KF6
+packages should continue to come from Slackware's normal KDE build. This SonicDE
+tree should build only the packages where SonicDE has real source forks/tags.
+
+Important changes
+-----------------
+kde/ was renamed to sonicde/
+kde.SlackBuild was renamed to sonicde.SlackBuild
+
+The build driver is now:
+
+  sonicde/sonicde.SlackBuild
+
+SonicDE source tarballs are generated under:
+
+  sonicde/src/
+
+Use this helper before building if the tarballs are not present:
+
+  cd sonicde
+  ./sonicde_checkout.sh -c -f sonic
+
+The old KDE source tarballs that were replaced by SonicDE sources were removed.
+
+Source mapping
+--------------
+Packages listed in sonicde/package-renames are generated with SonicDE package
+names. The internal Slackware/KDE package key is still used for build metadata
+lookup.
+
+SonicDE source names are selected through pkgsrc mappings. Example:
+
+  sonicde/pkgsrc/kdecoration -> plasma/sonic-decoration
+  sonicde/pkgsrc/kwin-x11 -> plasma/sonic-win
+  sonicde/pkgsrc/plasma-workspace -> plasma/sonic-workspace
+
+This keeps Slackware's existing module names, patches, cmake overrides,
+post-install scripts, slack-desc files, and dependency expectations working.
+
+When UPGRADE=yes and a SonicDE output package has a different name, the build
+uses upgradepkg's oldname%newpackage form so the matching KDE/Plasma package is
+replaced instead of installed in parallel.
+
+Build module
+------------
+A focused SonicDE module is provided:
+
+  sonicde/modules/sonic
+
+This is the recommended test target. It contains SonicDE packages with a public
+Sonic-DE repository and matching tag.
+
+Test package resolution:
+
+  cd sonicde
+  PRINT_PACKAGE_NAME=1 ./sonicde.SlackBuild sonic
+
+Build and install on a test machine:
+
+  TMP=/tmp/sonicde-build \
+  SLACK_KDE_BUILD_DIR=/tmp/sonicde-packages \
+  UPGRADE=yes \
+  SKIPBUILT=no \
+  EXITFAIL=yes \
+  ./sonicde.SlackBuild
+
+Build without installing:
+
+  TMP=/tmp/sonicde-build \
+  SLACK_KDE_BUILD_DIR=/tmp/sonicde-packages \
+  UPGRADE=no \
+  SKIPBUILT=no \
+  EXITFAIL=yes \
+  ./sonicde.SlackBuild
+
+Packages currently in sonic
+---------------------------
+silver-theme -> sonic-silver-theme
+silver-sddm -> sonic-silver-sddm
+extra-cmake-modules -> sonic-frameworks-cmake-modules
+attica -> sonic-frameworks-open-collab
+kauth -> sonic-frameworks-auth
+polkit-qt-1 -> sonic-polkit
+kcoreaddons -> sonic-frameworks-core-addons
+kguiaddons -> sonic-frameworks-gui-addons
+kdoctools -> sonic-frameworks-doctools
+kglobalaccel -> sonic-frameworks-keybind
+kwindowsystem -> sonic-frameworks-windowsystem
+kirigami -> sonic-frameworks-quick-ui
+kirigami-addons -> sonic-frameworks-quick-ui-addons
+kquickimageeditor -> sonic-quick-image-editor
+sonic-frameworks-via -> sonic-frameworks-via
+krunner -> sonic-frameworks-runner
+kio -> sonic-frameworks-io
+kio-fuse -> sonic-frameworks-io-fuse
+kio-extras -> sonic-frameworks-io-extras
+kdecoration -> sonic-decoration
+kglobalacceld -> sonic-keybind-daemon
+kinfocenter -> sonic-system-info
+libksysguard -> sonic-sysguard-library
+libkscreen -> sonic-screen-library
+plasma-activities -> sonic-activities
+libplasma -> sonic-interface-libraries
+kpipewire -> sonic-pipewire
+kscreenlocker -> sonic-screenlocker
+knighttime -> sonic-night-light
+kwin-x11 -> sonic-win
+plasma-workspace -> sonic-workspace
+plasma-desktop -> sonic-desktop-interface
+kdeplasma-addons -> sonic-workspace-addons
+plasma-workspace-wallpapers -> sonic-workspace-wallpapers
+plasma-nm -> sonic-network-manager
+kscreen -> sonic-screen
+plasma-pa -> sonic-audio-applet-pulse
+plasma-login-manager -> sonic-login-manager
+plasma-mobile -> sonic-mobile-interface
+
+Ready entries without confirmed public repo/tag
+-----------------------------------------------
+sonic-silver-sddm
+sonic-silver-theme
+sonicde-meta
+
+Notes
+-----
+Running ./sonicde.SlackBuild with no arguments builds the focused SonicDE module.
+
+If SLACK_KDE_BUILD_DIR is not set, packages are written under
+/tmp/sonicde_build by default.
+
+This tree currently tracks the confirmed public SonicDE tags used by the build:
+Frameworks 6.27.0/6.27.0.1 plus tagged support libraries, KIO Extras 26.07.70,
+and Plasma/SonicDE 6.7.1/6.7.2 package sources, including 6.7.2.1 and 6.7.2.3
+point tags. A full package build on Slackware-current is still
+the real integration test.
+
+Some runtime names may still say Plasma/KDE. That is expected because many
+upstream install paths, CMake targets, translations, and scripts still use KDE
+or Plasma names.
+
+Slackware does not use dependency metadata like Arch. Treat the package list as
+documentation: install Slackware KDE/Plasma first, then replace only the listed
+stock packages with SonicDE builds. Keep the rest of KDE/Plasma installed.
+
+SonicDE system information reads /etc/xdg/scm-about-distrorc. The package also
+installs /etc/xdg/kcm-about-distrorc for compatibility with the KDE/Slackware
+name.

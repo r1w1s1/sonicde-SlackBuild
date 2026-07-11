@@ -1,0 +1,102 @@
+# Set default arch/build.  A default version is not needed since
+# package versions are determined by their source tarvall.
+
+[ -z $BUILD ] && export BUILD=1
+[ -z $TAG ] && export TAG=
+
+# Automatically determine the architecture we're building on:
+if [ -z "$ARCH" ]; then
+  case "$(uname -m)" in
+    i?86) ARCH=i686 ;;
+    arm*) ARCH=arm ;;
+    # Unless $ARCH is already set, use uname -m for all other archs:
+    *) ARCH=$(uname -m) ;;
+  esac
+  export ARCH
+fi
+
+[ -z $PKGARCH ] && export PKGARCH=$ARCH
+
+# Use this as CFLAGS and CXXFLAGS:
+if [ -z "$SLKCFLAGS" ]; then
+  if [ "$ARCH" = "i586" ]; then
+    export SLKCFLAGS="-O2 -march=i586 -mtune=i686"
+    export LIBDIRSUFFIX=""
+  elif [ "$ARCH" = "i686" ]; then
+    export SLKCFLAGS="-O2 -march=pentium4 -mtune=generic"
+    export LIBDIRSUFFIX=""
+  elif [ "$ARCH" = "x86_64" ]; then
+    export SLKCFLAGS="-O2 -march=x86-64 -mtune=generic -fPIC"
+    export LIBDIRSUFFIX="64"
+  elif [ "$ARCH" = "arm" ]; then
+    export SLKCFLAGS="-O2 -march=armv7-a -mfpu=vfpv3-d16 -mfloat-abi=hard"
+    export LIBDIRSUFFIX=""
+  elif [ "$ARCH" = "aarch64" ]; then
+    export SLKCFLAGS="-O2 -fPIC"
+    export LIBDIRSUFFIX="64"
+  else
+    export SLKCFLAGS="-O2"
+    export LIBDIRSUFFIX=""
+  fi
+fi
+
+# Use this to set the number of parallel make jobs:
+NUMJOBS=${NUMJOBS:-" -j $(expr $(nproc) + 1) "}
+export NUMJOBS
+
+# Additional cmake flags that are spanned across the KDE modules
+# Do not use "final build" unless we build an actual release.
+export KDE_OPT_ARGS=" \
+  -DSITE=\"slackware.com\" \
+  -DKDE_DISTRIBUTION_TEXT=\"volkerdi@slackware.com\" \
+  -DBUILD_TESTING=OFF \
+  -DKDE_PLATFORM_FEATURE_DISABLE_DEPRECATED=TRUE \
+ "
+
+# Qt5 specific flags:
+export KDE_QT5_ARGS=(
+  -DQT_MAJOR_VERSION=5
+  -DBUILD_QT6:BOOL=OFF
+  -DBUILD_QT5:BOOL=ON
+  -DQT_PLUGINS_DIR=lib$LIBDIRSUFFIX/qt5/plugins
+  -DQT_PLUGIN_INSTALL_DIR=lib$LIBDIRSUFFIX/qt5/plugins
+  -DQML_INSTALL_DIR=lib$LIBDIRSUFFIX/qt5/qml
+)
+
+# Qt6 specific flags:
+export KDE_QT6_ARGS=(
+  -DQT_MAJOR_VERSION=6
+  -DQT_VERSION_MAJOR=6
+  -DBUILD_WITH_QT6:BOOL=ON
+  -DBUILD_QT6:BOOL=ON
+  -DUSE_QT6=ON \
+  -DBUILD_QT5:BOOL=OFF
+  -DQT_PLUGINS_DIR=lib$LIBDIRSUFFIX/qt6/plugins
+  -DQT_PLUGIN_INSTALL_DIR=lib$LIBDIRSUFFIX/qt6/plugins
+  -DQML_INSTALL_DIR=lib$LIBDIRSUFFIX/qt6/qml
+)
+
+# Double-quoting required because $SLKCFLAGS contains spaces:
+export KDE_BUILD_ARGS=(
+  -DCMAKE_BUILD_TYPE=Release
+  -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS"
+  -DCMAKE_C_FLAGS_RELEASE:STRING="$SLKCFLAGS"
+  -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS"
+  -DCMAKE_CXX_FLAGS_RELEASE:STRING="$SLKCFLAGS"
+  -DCMAKE_INSTALL_PREFIX=/usr
+  -DCMAKE_INSTALL_LIBDIR=lib$LIBDIRSUFFIX
+  -DKDE_INSTALL_LIBDIR=lib$LIBDIRSUFFIX
+  -DCMAKE_INSTALL_MANDIR=/usr/man
+  -DKDE_INSTALL_MANDIR=/usr/man
+  -DMAN_INSTALL_DIR=/usr/man \
+  -DCMAKE_INSTALL_SYSCONFDIR=/etc
+  -DKDE_INSTALL_SYSCONFDIR=/etc
+  -DCMAKE_INSTALL_LIBEXECDIR=/usr/libexec
+  -DKDE_INSTALL_LIBEXECDIR=/usr/libexec
+  -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+  -DLIB_SUFFIX=${LIBDIRSUFFIX}
+  -DBUILD_PYTHON_BINDINGS=OFF
+  -DBUILD_SHARED_LIBS=ON \
+  -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+  -Wno-dev
+ )

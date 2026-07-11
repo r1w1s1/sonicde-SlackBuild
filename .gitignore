@@ -1,0 +1,14 @@
+# Generated source tarballs and checkout work directories
+sonicde/src/**/*.tar.*
+sonicde/_sonicde_checkouts/
+sonicde/_plasma_checkouts/
+
+# Local build/output directories if created inside the tree
+sonicde/package-*/
+sonicde/**/*.txz
+sonicde/**/*.tgz
+
+# Local spreadsheet working files
+*.xlsx
+*.ods
+*.csv
