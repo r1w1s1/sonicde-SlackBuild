@@ -9,19 +9,25 @@ silver-sddm
 # Frameworks / build infrastructure replaced by SonicDE sources:
 extra-cmake-modules
 attica
+prison
 kauth
 polkit-qt-1
 kcoreaddons
 kguiaddons
 kdoctools
 kglobalaccel
+modemmanager-qt
+networkmanager-qt
 kwindowsystem
+syntax-highlighting
 kirigami
 kirigami-addons
+qca
 kquickimageeditor
 sonic-frameworks-via
 krunner
 kio
+pulseaudio-qt
 
 # KDE Gear / support components with SonicDE source:
 kio-fuse

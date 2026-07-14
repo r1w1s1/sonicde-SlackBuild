@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+                    |-----handy-ruler------------------------------------------------------|
+sonic-crypto-library: SonicDE crypto library
+sonic-crypto-library:
+sonic-crypto-library: This package is built from SonicDE sources and provides
+sonic-crypto-library: Qt Cryptographic Architecture library support.
+sonic-crypto-library:
+sonic-crypto-library: It replaces the matching KDE source in this SonicDE
+sonic-crypto-library: SlackBuild module.
+sonic-crypto-library:
+sonic-crypto-library:
+sonic-crypto-library: Homepage: https://github.com/Sonic-DE
+sonic-crypto-library:

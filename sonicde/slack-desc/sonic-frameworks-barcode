@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+                        |-----handy-ruler------------------------------------------------------|
+sonic-frameworks-barcode: SonicDE barcode framework
+sonic-frameworks-barcode:
+sonic-frameworks-barcode: This package is built from SonicDE sources and provides
+sonic-frameworks-barcode: barcode generation and scanning support for Qt software.
+sonic-frameworks-barcode:
+sonic-frameworks-barcode: It replaces the matching KDE Frameworks source in this
+sonic-frameworks-barcode: SonicDE SlackBuild module.
+sonic-frameworks-barcode:
+sonic-frameworks-barcode:
+sonic-frameworks-barcode: Homepage: https://github.com/Sonic-DE
+sonic-frameworks-barcode:
