@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+                                |-----handy-ruler------------------------------------------------------|
+sonic-frameworks-pseudo-terminal: SonicDE pseudo terminal framework
+sonic-frameworks-pseudo-terminal:
+sonic-frameworks-pseudo-terminal: This package is built from SonicDE sources and provides
+sonic-frameworks-pseudo-terminal: a SonicDE replacement for the matching KDE Frameworks source.
+sonic-frameworks-pseudo-terminal:
+sonic-frameworks-pseudo-terminal: It is part of the SonicDE SlackBuild module for testing
+sonic-frameworks-pseudo-terminal: a SonicDE-focused Slackware desktop stack.
+sonic-frameworks-pseudo-terminal:
+sonic-frameworks-pseudo-terminal:
+sonic-frameworks-pseudo-terminal: Homepage: https://github.com/Sonic-DE
+sonic-frameworks-pseudo-terminal:

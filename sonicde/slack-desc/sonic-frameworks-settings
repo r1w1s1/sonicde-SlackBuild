@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+                         |-----handy-ruler------------------------------------------------------|
+sonic-frameworks-settings: SonicDE configuration framework
+sonic-frameworks-settings:
+sonic-frameworks-settings: This package is built from SonicDE sources and provides
+sonic-frameworks-settings: a SonicDE replacement for the matching KDE Frameworks source.
+sonic-frameworks-settings:
+sonic-frameworks-settings: It is part of the SonicDE SlackBuild module for testing
+sonic-frameworks-settings: a SonicDE-focused Slackware desktop stack.
+sonic-frameworks-settings:
+sonic-frameworks-settings:
+sonic-frameworks-settings: Homepage: https://github.com/Sonic-DE
+sonic-frameworks-settings:

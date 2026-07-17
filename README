@@ -11,6 +11,16 @@ Install Slackware KDE first:
 
   slackpkg install kde
 
+Make sure the main Slackware `polkit` package is installed too. The agents are
+not enough; `sonic-polkit` needs `polkit-gobject-1.pc` from the main `polkit`
+package:
+
+  slackpkg install polkit
+
+Verify it with:
+
+  pkg-config --exists polkit-gobject-1 && echo OK
+
 Before downloading sources, check for newer public SonicDE tags:
 
   cd sonicde
@@ -27,6 +37,40 @@ Then download SonicDE sources, build, and install:
   TMP=/tmp/sonicde-build SLACK_KDE_BUILD_DIR=/tmp/sonicde-packages UPGRADE=yes SKIPBUILT=no EXITFAIL=yes ./sonicde.SlackBuild sonic
 
 Reboot or restart the graphical session after installation.
+
+KDE package replacement
+-----------------------
+Do not remove Slackware's KDE packages before building/installing SonicDE.
+Install Slackware's KDE set first, then build SonicDE with `UPGRADE=yes`.
+
+For packages listed in `sonicde/package-renames`, the SlackBuild replaces the
+installed Slackware package automatically. For example, if `plasma-workspace` is
+installed and SonicDE builds `sonic-workspace`, the install step uses Slackware's
+`upgradepkg old%new` syntax:
+
+  upgradepkg --install-new --reinstall plasma-workspace%sonic-workspace-...
+
+This removes the replaced KDE/Plasma package and installs the SonicDE package in
+one step. If the original KDE package is not installed, the SonicDE package is
+installed normally.
+
+Do not remove the whole KDE set after installing SonicDE. SonicDE still depends
+on many Qt6, Frameworks, Plasma, Gear, and integration packages from Slackware
+that are not replaced by this SlackBuild.
+
+After installation, check for leftover replaced KDE packages with:
+
+  cd sonicde
+  ./sonicde_remove_replaced.sh -n
+
+The dry run should report replaced packages as not installed. If it reports a
+replaced KDE/Plasma package still installed, inspect it before removing; it may
+indicate an incomplete SonicDE install or a package that was reinstalled later.
+
+Avoid running `slackpkg install kde` after SonicDE is installed, because it may
+install KDE packages that SonicDE intentionally replaced. For Slackware-current
+updates, update Slackware first, then rebuild/reinstall the SonicDE replacements
+as needed.
 
 Useful checks
 -------------

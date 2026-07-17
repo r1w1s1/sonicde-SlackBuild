@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+                             |-----handy-ruler------------------------------------------------------|
+sonic-frameworks-idle-tracker: SonicDE idle tracking framework
+sonic-frameworks-idle-tracker:
+sonic-frameworks-idle-tracker: This package is built from SonicDE sources and provides
+sonic-frameworks-idle-tracker: a SonicDE replacement for the matching KDE Frameworks source.
+sonic-frameworks-idle-tracker:
+sonic-frameworks-idle-tracker: It is part of the SonicDE SlackBuild module for testing
+sonic-frameworks-idle-tracker: a SonicDE-focused Slackware desktop stack.
+sonic-frameworks-idle-tracker:
+sonic-frameworks-idle-tracker:
+sonic-frameworks-idle-tracker: Homepage: https://github.com/Sonic-DE
+sonic-frameworks-idle-tracker:

@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+                         |-----handy-ruler------------------------------------------------------|
+sonic-browser-integration: SonicDE browser integration
+sonic-browser-integration:
+sonic-browser-integration: This package is built from SonicDE sources and provides
+sonic-browser-integration: a SonicDE replacement for the matching KDE source package.
+sonic-browser-integration:
+sonic-browser-integration: It is part of the SonicDE SlackBuild module for testing
+sonic-browser-integration: a SonicDE-focused Slackware desktop stack.
+sonic-browser-integration:
+sonic-browser-integration:
+sonic-browser-integration: Homepage: https://github.com/Sonic-DE
+sonic-browser-integration:

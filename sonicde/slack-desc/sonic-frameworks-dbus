@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+                     |-----handy-ruler------------------------------------------------------|
+sonic-frameworks-dbus: SonicDE D-Bus framework
+sonic-frameworks-dbus:
+sonic-frameworks-dbus: This package is built from SonicDE sources and provides
+sonic-frameworks-dbus: a SonicDE replacement for the matching KDE Frameworks source.
+sonic-frameworks-dbus:
+sonic-frameworks-dbus: It is part of the SonicDE SlackBuild module for testing
+sonic-frameworks-dbus: a SonicDE-focused Slackware desktop stack.
+sonic-frameworks-dbus:
+sonic-frameworks-dbus:
+sonic-frameworks-dbus: Homepage: https://github.com/Sonic-DE
+sonic-frameworks-dbus:

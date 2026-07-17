@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+              |-----handy-ruler------------------------------------------------------|
+sonic-firewall: SonicDE firewall configuration
+sonic-firewall:
+sonic-firewall: This package is built from SonicDE sources and provides
+sonic-firewall: a SonicDE replacement for the matching KDE source package.
+sonic-firewall:
+sonic-firewall: It is part of the SonicDE SlackBuild module for testing
+sonic-firewall: a SonicDE-focused Slackware desktop stack.
+sonic-firewall:
+sonic-firewall:
+sonic-firewall: Homepage: https://github.com/Sonic-DE
+sonic-firewall:
