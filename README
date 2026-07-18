@@ -61,11 +61,19 @@ that are not replaced by this SlackBuild.
 After installation, check for leftover replaced KDE packages with:
 
   cd sonicde
+  ./sonicde_validate_install.sh
+
+This validation script is read-only. It checks installed SonicDE versions,
+leftover replaced KDE/Plasma packages, and known CMake export issues.
+
+For a focused dry run of only replaced KDE/Plasma packages, use:
+
   ./sonicde_remove_replaced.sh -n
 
-The dry run should report replaced packages as not installed. If it reports a
-replaced KDE/Plasma package still installed, inspect it before removing; it may
-indicate an incomplete SonicDE install or a package that was reinstalled later.
+If it reports a replaced KDE/Plasma package still installed, inspect it before
+removing; it may indicate an incomplete SonicDE install or a package that was
+reinstalled later. Use `sonicde_remove_replaced.sh` without `-n` only as a
+manual cleanup tool.
 
 Avoid running `slackpkg install kde` after SonicDE is installed, because it may
 install KDE packages that SonicDE intentionally replaced. For Slackware-current

@@ -11,7 +11,7 @@ sonic-frameworks-dbus 6.28.0
 sonic-polkit 0.201.1
 sonic-frameworks-settings 6.28.0
 sonic-frameworks-core-addons 6.28.0
-sonic-frameworks-crash-handler 6.28.0
+sonic-frameworks-crash-handler 6.27.0
 sonic-frameworks-gui-addons 6.28.0
 sonic-frameworks-color-scheme 6.28.0
 sonic-frameworks-settings-ui 6.28.0
@@ -34,7 +34,7 @@ sonic-frameworks-device-integration 6.28.0
 sonic-frameworks-data-models 6.28.0
 sonic-frameworks-data-views 6.28.0
 sonic-frameworks-holidays 6.28.0
-sonic-frameworks-idle-tracker 6.28.0
+sonic-frameworks-idle-tracker 6.28.0.1
 sonic-frameworks-image-formats 6.28.0
 sonic-frameworks-file-metadata 6.28.0
 sonic-frameworks-file-search 6.28.0

@@ -81,6 +81,13 @@ output_pkgname() {
   fi
 }
 
+installed_pkgname() {
+  # Return the full installed package name for a package basename.  Passing the
+  # full name to upgradepkg old%new avoids ambiguity with package names ending
+  # in numeric components, such as polkit-kde-agent-1.
+  ls -1t /var/log/packages/${1}-[0-9]* 2>/dev/null | sed 's#.*/##' | head -n 1
+}
+
 # Set initial variables:
 cd $(dirname $0) ; CWD=$(pwd)
 
@@ -481,8 +488,8 @@ build_mod_pkg () {
           NEWPKG=${SLACK_KDE_BUILD_DIR}/${kde_module}/${PKGOUTNAME}-${MODULAR_PACKAGE_VERSION}-${PKGARCH}-${MODBUILD}${TAG}.txz
           if [ "$PKGOUTNAME" = "$PKGNAME" ]; then
             upgradepkg --install-new --reinstall ${NEWPKG}
-          elif ls /var/log/packages/${PKGNAME}-[0-9]* 1> /dev/null 2> /dev/null ; then
-            upgradepkg --install-new --reinstall ${PKGNAME}%${NEWPKG}
+          elif [ -n "$(installed_pkgname ${PKGNAME})" ]; then
+            upgradepkg --install-new --reinstall $(installed_pkgname ${PKGNAME})%${NEWPKG}
           else
             upgradepkg --install-new --reinstall ${NEWPKG}
           fi
