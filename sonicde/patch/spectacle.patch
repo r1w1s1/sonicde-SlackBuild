@@ -1,0 +1,2 @@
+sed -i 's/pkg_check_modules(OPENCV REQUIRED IMPORTED_TARGET opencv5)/pkg_check_modules(OPENCV REQUIRED IMPORTED_TARGET opencv4)/' CMakeLists.txt
+sed -i 's/find_package(OpenCV 5 REQUIRED core imgproc)/find_package(OpenCV 4.7 REQUIRED core imgproc)/' CMakeLists.txt
