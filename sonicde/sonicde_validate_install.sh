@@ -48,12 +48,12 @@ else
 fi
 
 heading "Old SonicDE versions"
-OLD_SONIC=$(ls ${ADM_DIR}/packages/sonic-* 2>/dev/null | grep -E '6\.27\.0|6\.7\.2' | grep -v 'sonic-pipewire-6\.7\.2' | grep -v 'sonic-frameworks-crash-handler-6\.27\.0' || true)
+OLD_SONIC=$(ls ${ADM_DIR}/packages/sonic-* 2>/dev/null | grep -E '6\.27\.0|6\.7\.2' | grep -v 'sonic-pipewire-6\.7\.2' || true)
 if [ -n "${OLD_SONIC}" ]; then
   echo "${OLD_SONIC}"
   fail "Old SonicDE packages remain installed."
 else
-  pass "No old SonicDE 6.27.0/6.7.2 packages found, except allowed sonic-pipewire 6.7.2 and sonic-frameworks-crash-handler 6.27.0."
+  pass "No old SonicDE 6.27.0/6.7.2 packages found, except allowed sonic-pipewire 6.7.2."
 fi
 
 heading "Core package versions"

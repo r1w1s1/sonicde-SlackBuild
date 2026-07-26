@@ -11,7 +11,7 @@ sonic-frameworks-dbus 6.28.0
 sonic-polkit 0.201.1
 sonic-frameworks-settings 6.28.0
 sonic-frameworks-core-addons 6.28.0
-sonic-frameworks-crash-handler 6.27.0
+sonic-frameworks-crash-handler 6.28.0
 sonic-frameworks-gui-addons 6.28.0
 sonic-frameworks-color-scheme 6.28.0
 sonic-frameworks-settings-ui 6.28.0
