@@ -424,10 +424,14 @@ build_mod_pkg () {
         cp -a $(cat $CWD/docs/${PKGNAME}) \
           $PKG/usr/doc/${PKGOUTNAME}-${MODULAR_PACKAGE_VERSION}
       else
-        cp -a \
+        for docfile in \
           AUTHORS* CONTRIBUTING* COPYING* HACKING* \
-          INSTALL* LICENSE* MAINTAINERS README* NEWS* TODO* \
-          $PKG/usr/doc/${PKGOUTNAME}-${MODULAR_PACKAGE_VERSION}
+          INSTALL* LICENSE* MAINTAINERS README* NEWS* TODO* ; do
+          if [ -e "$docfile" ]; then
+            cp -a "$docfile" \
+              $PKG/usr/doc/${PKGOUTNAME}-${MODULAR_PACKAGE_VERSION}
+          fi
+        done
           # If there's a ChangeLog, installing at least part of the recent
           # history is useful, but don't let it get totally out of control:
           if [ -r ChangeLog ]; then

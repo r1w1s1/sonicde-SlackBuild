@@ -58,6 +58,7 @@ ksvg
 kirigami-addons
 kpty
 kdesu
+kcmutils
 purpose
 kparts
 ktexteditor
@@ -65,20 +66,24 @@ kunitconversion
 kuserfeedback
 syndication
 bluez-qt
+qca
 kwallet
 kwallet-pam
 qqc2-breeze-style
 oxygen-icons
-qca
 kquickimageeditor
 sonic-frameworks-via
 krunner
-kcmutils
 pulseaudio-qt
 
 # Standalone Sonic extras and themes:
+kdecoration
 silver-theme
 silver-sddm
+
+# Plasma libraries required by support components:
+plasma-activities
+plasma-activities-stats
 
 # KDE Gear / support components with SonicDE source:
 kio-fuse
@@ -89,18 +94,15 @@ ksystemlog
 konsole
 
 # Plasma/SonicDE desktop components:
-kdecoration
 kactivitymanagerd
 kglobalacceld
+libplasma
 kinfocenter
 milou
+libksysguard
 ksystemstats
 kde-cli-tools
-libksysguard
 libkscreen
-plasma-activities
-plasma-activities-stats
-libplasma
 plasma5support
 kpipewire
 polkit-kde-agent-1

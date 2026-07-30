@@ -1,0 +1,174 @@
+SonicDE chroot build guide
+==========================
+
+This document is for maintainers building SonicDE packages for distribution.
+Run the commands inside a Slackware-current chroot as root.
+
+Build model
+-----------
+
+SonicDE is a replacement layer based on Slackware's KDE build system. A full
+KDE installation is the supported build environment, but a minimal chroot can
+be used to discover and document the real dependency order.
+
+The SlackBuild does not resolve dependencies. With `UPGRADE=yes`, each package
+is installed inside the disposable chroot after it is built, allowing later
+packages to use it. This installation is required for a sequential bootstrap;
+it does not install anything on the host outside the chroot.
+
+Known external dependencies
+---------------------------
+
+The current minimal-chroot test has required these Slackware packages in
+addition to the normal compiler and build tools:
+
+  qt6
+  polkit
+  qcoro
+  kpmcore
+  kdsoap-ws-discovery-client
+  frameworkintegration
+  plasma-wayland-protocols
+  systemsettings
+
+`plasma-wayland-protocols` is currently required by `sonic-rdp` (`krdp`). It
+must remain installed even if Wayland support becomes optional elsewhere.
+
+`systemsettings` is required at runtime by `sonic-system-info` because the
+Info Center uses the System Settings executable.
+Additional dependencies may be exposed by future source updates.
+
+Initial setup
+-------------
+
+Install the base build system and known external dependencies. The complete KDE
+set is still the safest reference environment:
+
+  slackpkg install kde
+  slackpkg install polkit qcoro kpmcore kdsoap-ws-discovery-client frameworkintegration plasma-wayland-protocols systemsettings
+
+Verify polkit:
+
+  pkg-config --exists polkit-gobject-1 && echo OK
+
+Download sources:
+
+  cd sonicde
+  ./sonicde_checkout.sh -c -f sonic
+
+Build
+-----
+
+Use the default temporary and output directories for a clean bootstrap:
+
+  UPGRADE=yes SKIPBUILT=no EXITFAIL=yes ./sonicde.SlackBuild sonic
+
+`UPGRADE=yes` is important in a minimal chroot. `UPGRADE=no` creates archives
+without installing them and will only work when all later build dependencies
+are already installed by another method.
+
+Resume after a failure
+----------------------
+
+Install the missing external dependency, then skip existing archives:
+
+  UPGRADE=yes SKIPBUILT=yes EXITFAIL=yes ./sonicde.SlackBuild sonic
+
+To resume from a known internal package and continue onward, use a trailing
+comma. The argument is the internal Slackware/KDE key, not the SonicDE output
+name:
+
+  UPGRADE=yes SKIPBUILT=yes EXITFAIL=yes ./sonicde.SlackBuild sonic:plasma-integration,
+
+Package order is important. When a package requires a SonicDE CMake package
+that is scheduled later, move the provider earlier in `modules/sonic` and repeat
+the test in a clean chroot.
+
+Completeness check
+------------------
+
+The expected output names come from `package-renames`. Compare them with the
+archives in the default output directory:
+
+  awk '!/^[[:space:]]*#/ && NF {print $2}' package-renames | sort -u > /tmp/sonicde-expected
+  ls -1 /tmp/sonicde_build/*.txz | sed 's#.*/##; s/-[0-9].*$//' | sort -u > /tmp/sonicde-built
+  comm -23 /tmp/sonicde-expected /tmp/sonicde-built
+  comm -13 /tmp/sonicde-expected /tmp/sonicde-built
+  wc -l /tmp/sonicde-built
+
+Both `comm` commands must produce no output. Do not distribute packages while
+any expected package is missing.
+
+Package validation
+------------------
+
+Check that every archive is readable:
+
+  for package in /tmp/sonicde_build/*.txz; do
+    tar -tf "$package" >/dev/null || exit 1
+  done
+
+Generate the external Slackware-style description file for every package. The
+`.txt` file is a copy of the package's `install/slack-desc`; it does not contain
+the `PACKAGES.TXT` header fields:
+
+  set -o pipefail
+  for package in ./*.txz; do
+    tar -xOf "$package" install/slack-desc \
+      | awk '!/^#/ && !/^[[:space:]]*\|/' \
+      > "${package%.txz}.txt" || exit 1
+  done
+  ls -1 ./*.txt | wc -l
+
+Release metadata
+----------------
+
+Run this section outside the chroot, as the release user, from the final
+release directory after all packages and package descriptions have been
+generated. Replace the path and key fingerprint as needed. Never copy the
+private GPG key into the chroot or release tree.
+
+  cd /tmp/sonicde_build
+  cp /path/to/sonicde-SlackBuild/GPG-KEY .
+  key='9361CF16404501FFC9D1809CED639037490EA7E9'
+
+Sign every package. The detached ASCII signatures are written beside the
+archives as `.txz.asc` files:
+
+  for package in ./*.txz; do
+    gpg --local-user "$key" --armor --detach-sign "$package" || exit 1
+  done
+
+Generate `CHECKSUMS.md5` in stable filename order. It covers all release files
+except the checksum manifest and its signature, avoiding a circular checksum:
+
+  rm -f CHECKSUMS.md5 CHECKSUMS.md5.asc
+  while IFS= read -r file; do
+    md5sum "$file"
+  done < <(find . -maxdepth 1 -type f \
+    ! -name 'CHECKSUMS.md5' ! -name 'CHECKSUMS.md5.asc' \
+    -printf './%f\n' | sort) > CHECKSUMS.md5
+
+Sign the checksum manifest and verify all signatures:
+
+  gpg --local-user "$key" --armor --detach-sign CHECKSUMS.md5
+  gpg --verify CHECKSUMS.md5.asc CHECKSUMS.md5
+  while IFS= read -r signature; do
+    gpg --verify "$signature" "${signature%.asc}" || exit 1
+  done < <(find . -maxdepth 1 -type f -name '*.txz.asc' -print | sort)
+
+Verify the manifest before publishing:
+
+  tail -n +1 CHECKSUMS.md5 | md5sum --check
+
+The final directory should contain `GPG-KEY`, one `.txt` and one `.txz.asc`
+for every package, plus `CHECKSUMS.md5` and `CHECKSUMS.md5.asc`.
+
+After installing the generated packages in a test system:
+
+  cd sonicde
+  ./sonicde_validate_install.sh
+  ./sonicde_remove_replaced.sh -n
+
+Do not remove the remaining KDE set. Only packages explicitly replaced by
+SonicDE should be absent from the installed stock package list.
