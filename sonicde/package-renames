@@ -6,7 +6,6 @@
 #
 # Only packages with a public Sonic-DE repository and a matching tag are listed
 # here.
-silver-theme sonic-silver-theme
 silver-sddm sonic-silver-sddm
 extra-cmake-modules sonic-frameworks-cmake-modules
 attica sonic-frameworks-open-collab
@@ -124,6 +123,7 @@ krdp sonic-rdp
 kscreen sonic-screen
 spectacle sonic-screenies
 breeze sonic-silver
+sonic-breeze sonic-breeze
 breeze-gtk sonic-silver-gtk
 ksshaskpass sonic-ssh-password-prompt
 plasma-systemmonitor sonic-system-monitor

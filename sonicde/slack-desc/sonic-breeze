@@ -1,0 +1,16 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in.
+
+            |-----handy-ruler------------------------------------------------------|
+sonic-breeze: SonicDE Breeze style
+sonic-breeze:
+sonic-breeze: This package provides the optional Breeze theme for SonicDE.
+sonic-breeze: Silver remains the default SonicDE theme.
+sonic-breeze:
+sonic-breeze: Build and install this package separately when Breeze is explicitly
+sonic-breeze: requested by the user.
+sonic-breeze:
+sonic-breeze: Homepage: https://github.com/Sonic-DE
+sonic-breeze:

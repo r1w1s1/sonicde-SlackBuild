@@ -56,6 +56,14 @@ With `UPGRADE=yes`, packages listed in `package-renames` replace their matching
 KDE/Plasma packages automatically. Do not install replacement packages beside
 their original packages with plain `installpkg`.
 
+The optional `sonic-breeze` package is not part of the default `sonic` module.
+Build it explicitly only when a user wants to use Breeze instead of the default
+Silver theme:
+
+```sh
+UPGRADE=yes SKIPBUILT=no EXITFAIL=yes ./sonicde.SlackBuild optional:sonic-breeze
+```
+
 After installation, restart the graphical session and validate the result:
 
 ```sh

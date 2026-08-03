@@ -67,6 +67,11 @@ Use the default temporary and output directories for a clean bootstrap:
 without installing them and will only work when all later build dependencies
 are already installed by another method.
 
+The optional `sonic-breeze` package is intentionally not part of the default
+`sonic` module. Build it separately only when Breeze is explicitly requested:
+
+  UPGRADE=yes SKIPBUILT=no EXITFAIL=yes ./sonicde.SlackBuild optional:sonic-breeze
+
 Resume after a failure
 ----------------------
 

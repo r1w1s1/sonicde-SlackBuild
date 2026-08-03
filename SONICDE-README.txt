@@ -59,3 +59,10 @@ install packages in dependency order when installing on a minimal system.
 This release does not yet provide `PACKAGES.TXT`; therefore `slackpkg+`
 integration is not available yet. Manual download and installation are
 supported.
+
+Theme choice
+------------
+
+Silver is the default SonicDE theme. `sonic-breeze` is an optional package and
+is not part of the default package build. It must be built and installed
+manually when a user explicitly wants to use Breeze.

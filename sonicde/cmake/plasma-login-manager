@@ -4,5 +4,6 @@ cd build
     $KDE_OPT_ARGS \
     "${KDE_BUILD_ARGS[@]}" \
     "${KDE_QT6_ARGS[@]}" \
+    -DX_SERVER_EXECUTABLE=/usr/libexec/Xorg \
     -DINSTALL_PAM_CONFIGURATION:BOOL=OFF \
     .. || exit 1

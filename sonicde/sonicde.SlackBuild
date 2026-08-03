@@ -589,11 +589,16 @@ do
   deterministic_build $module
   if [ $? = 0 ]; then
     # Success!
-    # Move the created packages up into the KDE build directory:
-    mv ${SLACK_KDE_BUILD_DIR}/$(echo $module |cut -f1 -d:)/*.t?z ${SLACK_KDE_BUILD_DIR}/ 2> /dev/null
+    # Keep optional module packages in their module directory. The default
+    # SonicDE module is the flat release root; optional modules are separate
+    # release areas for rsync and manual installation.
+    module_name=$(echo $module | cut -f1 -d:)
+    if [ "$module_name" = "sonic" ]; then
+      mv ${SLACK_KDE_BUILD_DIR}/${module_name}/*.t?z ${SLACK_KDE_BUILD_DIR}/ 2> /dev/null
+    fi
     if [ "$CLEANUP" = "yes" -o "$CLEANUP" = "YES" ]; then
       # Clean out package and build directories:
-      find ${SLACK_KDE_BUILD_DIR}/$(echo $module |cut -f1 -d:) -type d -mindepth 1 -maxdepth 1 |xargs rm -rf
+      find ${SLACK_KDE_BUILD_DIR}/${module_name} -type d -mindepth 1 -maxdepth 1 |xargs rm -rf
     fi
   else
     if [ -z "$PRINT_PACKAGE_NAME" ]; then

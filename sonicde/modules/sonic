@@ -78,7 +78,6 @@ pulseaudio-qt
 
 # Standalone Sonic extras and themes:
 kdecoration
-silver-theme
 silver-sddm
 
 # Plasma libraries required by support components:
