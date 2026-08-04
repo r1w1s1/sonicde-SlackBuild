@@ -1,12 +1,10 @@
+![SonicDE for Slackware](SonicDE.png)
+
 # SonicDE SlackBuild for Slackware
 
 SonicDE provides selected KDE/Plasma replacement packages for Slackware-current.
 It is not currently a standalone desktop package set. Keep the Slackware KDE
 packages that SonicDE does not replace.
-
-## Desktop Preview
-
-![SonicDE desktop preview](SonicDE.png)
 
 ## Requirements
 
