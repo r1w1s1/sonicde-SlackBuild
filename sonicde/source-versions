@@ -14,7 +14,7 @@ sonic-frameworks-core-addons 6.28.0
 sonic-frameworks-crash-handler 6.28.0
 sonic-frameworks-gui-addons 6.28.0
 sonic-frameworks-color-scheme 6.28.0.1
-sonic-frameworks-settings-ui 6.28.0
+sonic-frameworks-settings-ui 6.28.0.1
 sonic-frameworks-settings-utils 6.28.0
 sonic-frameworks-autocomplete 6.28.0
 sonic-frameworks-bookmarks 6.28.0
@@ -22,7 +22,7 @@ sonic-frameworks-progress-ui 6.28.0
 sonic-frameworks-doctools 6.28.0
 sonic-frameworks-keybind 6.28.0
 sonic-frameworks-internationalization 6.28.0
-sonic-frameworks-icon-themes 6.28.0
+sonic-frameworks-icon-themes 6.28.0.1
 sonic-frameworks-text-codec 6.28.0
 sonic-frameworks-text-widgets 6.28.0
 sonic-frameworks-widgets-addons 6.28.0
@@ -50,7 +50,7 @@ sonic-frameworks-quick-charts 6.28.0
 sonic-frameworks-quick-desktop-style 6.28.0
 sonic-frameworks-svg 6.28.0
 sonic-frameworks-quick-ui 6.28.0
-sonic-frameworks-quick-ui-addons 1.12.1
+sonic-frameworks-quick-ui-addons 1.13.1
 sonic-frameworks-root-shell 6.28.0
 sonic-frameworks-pseudo-terminal 6.28.0
 sonic-frameworks-purpose 6.28.0
@@ -62,7 +62,7 @@ sonic-frameworks-feeds 6.28.0
 sonic-frameworks-bluetooth 6.28.0
 sonic-frameworks-keyring 6.28.0
 sonic-frameworks-keyring-pam 6.7.3
-sonic-frameworks-silver-icons 6.28.0.2
+sonic-frameworks-silver-icons 6.28.0.4
 sonic-frameworks-spell-check 6.28.0
 sonic-frameworks-quick-silver-style 6.7.3
 sonic-frameworks-xml-gui 6.28.0
@@ -93,8 +93,8 @@ sonic-pulseaudio-library 1.8.1
 sonic-polkit-agent 6.7.3
 sonic-screenlocker 6.7.3.2
 sonic-night-light 6.7.3
-sonic-win 6.7.3.2
-sonic-workspace 6.7.3.2
+sonic-win 6.7.3.3
+sonic-workspace 6.7.3.3
 sonic-desktop-interface 6.7.3.4
 sonic-workspace-addons 6.7.3.1
 sonic-workspace-wallpapers 6.7.3
@@ -109,11 +109,11 @@ sonic-launcher-menu-edit 6.7.3
 sonic-network-manager 6.7.3
 sonic-oxygen 6.7.3.1
 sonic-oxygen-sounds 6.7.3
-sonic-qt-theme-bridge 6.7.3.1
+sonic-qt-theme-bridge 6.7.3.2
 sonic-rdp 6.7.3
 sonic-screen 6.7.3
-sonic-screenies 6.7.3.2
-sonic-silver 6.7.3
+sonic-screenies 6.7.3.3
+sonic-silver 6.7.3.1
 sonic-silver-gtk 6.7.3.1
 sonic-ssh-password-prompt 6.7.3
 sonic-system-monitor 6.7.3
@@ -128,4 +128,4 @@ sonic-mobile-interface 6.7.3.2
 sonic-exiv2-library 26.04.3
 sonic-partition-manager 26.04.3
 sonic-system-log 26.04.3
-sonic-terminal 26.04.3
+sonic-terminal 26.04.3.1

@@ -24,10 +24,14 @@ if [ -f $usermodmap ]; then
   xmodmap $usermodmap
 fi
 
+# The session is started with startx, so identify it explicitly as X11 for
+# applications launched from the Plasma desktop.
+export XDG_SESSION_TYPE=x11
+export QT_QPA_PLATFORM=xcb
+
 # Start the window manager:
 if [ -z "$DESKTOP_SESSION" -a -x /usr/bin/ck-launch-session ]; then
   ck-launch-session dbus-launch --sh-syntax --exit-with-session startplasma-x11
 else
   dbus-launch --sh-syntax --exit-with-session startplasma-x11
 fi
-
