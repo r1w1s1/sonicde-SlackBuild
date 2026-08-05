@@ -1,4 +1,4 @@
-![SonicDE for Slackware](SonicDE.png)
+![SonicDE on Slackware Linux](./docs/img/screenshot.jpg)
 
 # SonicDE SlackBuild for Slackware
 
